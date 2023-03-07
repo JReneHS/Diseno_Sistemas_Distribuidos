@@ -16,6 +16,8 @@ JC = javac
 
 CLASSES = \
 		PruebaRectangulo.java \
+		PruebaPoligIrreg.java \
+		PoligonoIrreg.java \
 		Rectangulo.java \
 		Coordenada.java \
 
@@ -34,4 +36,4 @@ clean:
 
 run:
 
-	java PruebaRectangulo
+	java PruebaPoligIrreg

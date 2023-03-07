@@ -16,7 +16,7 @@ public class PruebaRectangulo {
 
     }
 
-    private static void ImprimirDatos(Rectangulo rect) {
+    public static void ImprimirDatos(Rectangulo rect) {
         double ancho, alto;
 
         System.out.println("Calculando el área de un rectángulo dadas sus coordenadas en un plano cartesiano:");
