@@ -1,5 +1,4 @@
 //package Semestre_23_2.Clase08;
-import java.sql.SQLInvalidAuthorizationSpecException;
 import java.util.Random;
 
 public class PruebaPoligIrreg {
