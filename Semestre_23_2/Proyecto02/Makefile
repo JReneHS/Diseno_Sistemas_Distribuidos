@@ -1,20 +1,23 @@
 
 # Proyecto 2
-# Mexicano Ixtepan Alejandro
+# Hernandez Sanchez Juan Rene
 # 4CM13
 # Makefile
 
 JFLAGS = -g
 JC = javac
+PK = Proyecto
 
 .SUFFIXES: .java .class
 
 .java.class:
-	$(JC) $(JFLAGS) $*.java
+	$(JC) $(JFLAGS) $(PK)/$*.java
 
 CLASSES = \
-		  App.java \
-		  PoligonoReg.java \
+		SimpleGui2.java \
+		App.java \
+		PoligonoReg.java \
+		Coordenada.java \
 		  
 default: $(CLASSES:.java=.class)
 
@@ -22,4 +25,4 @@ clean:
 	$(RM) *.class
 	
 run:
-	java App
+	java $(PK).SimpleGui2
