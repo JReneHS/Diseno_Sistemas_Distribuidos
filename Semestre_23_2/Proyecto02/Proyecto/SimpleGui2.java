@@ -64,7 +64,7 @@ public class SimpleGui2 extends JFrame {
                     TimeUnit.MILLISECONDS.sleep(10);
                     // Tiempo de Visualizacion de cada figura por separado
                 } else {
-                    TimeUnit.MILLISECONDS.sleep(800);
+                    TimeUnit.MILLISECONDS.sleep(500);
                 }
             } catch (Exception e) {
 
