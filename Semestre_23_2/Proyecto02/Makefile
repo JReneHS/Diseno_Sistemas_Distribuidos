@@ -11,13 +11,12 @@ PK = Proyecto
 .SUFFIXES: .java .class
 
 .java.class:
-	$(JC) $(JFLAGS) $(PK)/$*.java
+	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-		SimpleGui2.java \
-		App.java \
-		PoligonoReg.java \
-		Coordenada.java \
+		Proyecto/SimpleGui2.java \
+		Proyecto/PoligonoReg.java \
+		Proyecto/Coordenada.java \
 		  
 default: $(CLASSES:.java=.class)
 
@@ -25,4 +24,4 @@ clean:
 	$(RM) *.class
 	
 run:
-	java $(PK).SimpleGui2
+	java Proyecto.SimpleGui2

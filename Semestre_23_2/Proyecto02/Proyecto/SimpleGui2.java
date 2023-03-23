@@ -4,6 +4,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Proyecto 2
@@ -13,42 +14,111 @@ import java.util.ArrayList;
  */
 
 public class SimpleGui2 extends JFrame {
-    public static int numPoligonos = 50;
+    public static int numPoligonos = 10;
+    public static int totalLados = 20;
+    public static int limAbsis = 550;
+    public static int limOrd = 350;
+    public static int casePanel = -1;
+    public static int width = 800;
+    public static int height = 600;
+    public static boolean clean = false;
+    public static ArrayList<PoligonoReg> poligonosList;
 
     public static void main(String[] args) {
         try {
             numPoligonos = Integer.parseInt(args[0]);
         } catch (Exception e) {
-            System.out.println("Valor no valido o no ingresado, se asigna 50 como estandar");
+            System.out.println("Valor no valido o no ingresado, se asigna " + numPoligonos + " como estandar");
         }
+
+        poligonosList = new ArrayList<PoligonoReg>();
+
+        for (int i = 0, rand; i < numPoligonos; i++) {
+            rand = (int) (Math.random() * totalLados + 3);
+            poligonosList.add(new PoligonoReg(rand));
+        }
+
+        poligonosList.sort((actPol, nextPol) -> actPol.obtenerNumVertices()
+                .compareTo(nextPol.obtenerNumVertices()));
+
 
         SimpleGui2 gui = new SimpleGui2();
         gui.setVisible(true);
+        Panel p = gui.new Panel();
+        gui.add(p);
+        int tiempos = numPoligonos * 2;
+    
+        while (casePanel < tiempos) {
+            p.repaint();
+            try {
+                if (casePanel == -1) {
+                    TimeUnit.SECONDS.sleep(3);
+                } else {
+                    TimeUnit.MILLISECONDS.sleep(500);
+                }
+                clean = true;
+            } catch (Exception e) {
+
+            }
+            if (tiempos % 1 != 0) {
+                clean = true;
+            }
+            casePanel++;
+        }
     }
 
     public SimpleGui2() {
-        setSize(800, 600);
+        setSize(width, height);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Panel p = new Panel();
-        add(p);
     }
 
     private class Panel extends JPanel {
         @Override
         public void paintComponent(Graphics g) {
-            ArrayList<PoligonoReg> poligonosList = new ArrayList<PoligonoReg>();
 
-            for (int i = 0; i < numPoligonos; i++) {
-                poligonosList.add(new PoligonoReg(i + 3));
-            }
-            g.setColor(Color.blue);
-            Polygon poligono = new Polygon();
-            for (PoligonoReg poligonoReg : poligonosList) {
-                for (Coordenada cood : poligonoReg.obtenerVertices()) {
-                    poligono.addPoint(cood.abcisa(), cood.ordenada());
+            if(clean) {
+                limpiarFrame(g);
+            } else if (casePanel == -1) {
+                for (PoligonoReg poligonoReg : poligonosList) {
+                    int x = (int) (Math.random() * limAbsis + 1);
+                    int y = (int) (Math.random() * limOrd + 1);
+                    Polygon poligono = crearPolygon(poligonoReg, x, y);
+                    dibujaPoligono(g, poligono);
+                    dibujaCirculo(g, x, y);
                 }
+            } else {
+                int x = width/3;
+                int y = height/4;
+                Polygon poligono = crearPolygon(poligonosList.get(casePanel/2), x, y);
+                dibujaPoligono(g,poligono);
+                dibujaCirculo(g, x, y);
             }
-            g.drawPolygon(poligono);
+
         }
+
+    }
+
+    public Polygon crearPolygon(PoligonoReg pol, int x, int y) {
+        Polygon poligono = new Polygon();
+        for (Coordenada cood : pol.obtenerVertices()) {
+            poligono.addPoint(cood.abcisa() + x, cood.ordenada() + y);
+        }
+        return poligono;
+    }
+
+    public void limpiarFrame(Graphics g) {
+        g.setColor(getBackground());
+        g.fillRect(0, 0, width, height);
+        clean = false;
+    } 
+
+    public void dibujaPoligono(Graphics g, Polygon pol) {
+        g.setColor(Color.blue);
+        g.drawPolygon(pol);
+    }
+
+    public void dibujaCirculo(Graphics g, int x, int y) {
+        g.setColor(Color.RED);
+        g.drawOval(x, y, 260, 260);
     }
 }

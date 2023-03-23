@@ -9,7 +9,7 @@ package Proyecto;
 
 public class PoligonoReg {
 
-    private int nvertices;
+    private Integer nvertices;
     private double angulo;
     private Coordenada[] vertices;
 
@@ -39,5 +39,9 @@ public class PoligonoReg {
 
     public double obtenerArea() {
         return (double) this.nvertices * Math.cos(this.angulo / 2.0d) * Math.sin(this.angulo / 2.0d);
+    }
+
+    public Integer obtenerNumVertices() {
+        return this.nvertices;
     }
 }
