@@ -1,0 +1,29 @@
+# /*
+#  * Proyecto 3
+#  * Hernández Velázquez Emmanuel Alejandro - 2019600553
+#  * 2019-2
+#  * Desarrollo de Sistemas Distribuidos
+#  * Grupo: 4CM13
+#  */
+
+#!/bin/bash
+
+#Cambiamos al directorio donde se colcoarán las clases compiladas
+cd ./class
+echo "Estamos en..."
+pwd
+echo  "Compilando el programa..."
+echo  
+
+#Compilamos los 3 archivos del cliente Asincrono
+javac -d . ../src/*.java ../src/networking/WebClient.java
+echo  
+echo "Creando archivo JAR..."
+echo  
+
+jar -cf Application.jar *.class networking/*.class
+echo "Ejecutando el programa..."
+echo  
+
+#Ejecutamos el programa
+java -cp Application.jar Application
