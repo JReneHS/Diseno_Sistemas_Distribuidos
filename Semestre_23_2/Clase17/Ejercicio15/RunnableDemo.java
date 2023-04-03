@@ -1,4 +1,4 @@
-package Semestre_23_2.Clase17;
+package Semestre_23_2.Clase17.Ejercicio15;
 
 public class RunnableDemo {
     public static long hilo1;
