@@ -16,7 +16,8 @@ public class Partido {
     }
 
     private String createPartido() {
-        String[] partidos = { "Uno", "Dos", "Tres", "Cuatro", "Cinco", "Seis", "Siete"};
+        String[] partidos = { "Partido01", "Partido02", "Partido03", "Partido04", "Partido05", "Partido06",
+                "Partido07" };
         return partidos[(int) (Math.random() * 7)];
     }
 }

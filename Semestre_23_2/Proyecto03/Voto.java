@@ -14,12 +14,26 @@ public class Voto {
         this.partido = new Partido(partido);
     }
 
-    public Voto(String[]voto) {
+    public Voto(String[] voto) {
         this.curp = new Curp(voto[0]);
         this.partido = new Partido(voto[1]);
     }
 
-    public String getVoto() {
-        return this.curp.getCurp() + this.partido.getPartido();
+    public String getCurp() {
+        return this.curp.getCurp();
     }
+
+    public String getPartido() {
+        return this.partido.getPartido();
+    }
+
+    public String getVoto() {
+        return this.getCurp() + " " + this.getPartido();
+    }
+
+    @Override
+    public String toString() {
+        return this.getVoto();
+    }
+
 }

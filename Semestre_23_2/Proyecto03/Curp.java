@@ -51,5 +51,5 @@ public class Curp {
         }
         return sb.toString();
     }
-   
+
 }
