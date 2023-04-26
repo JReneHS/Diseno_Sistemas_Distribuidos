@@ -19,6 +19,10 @@ public class Voto {
         this.partido = new Partido(voto[1]);
     }
 
+    public Curp getObjectCurp() {
+        return this.curp;
+    }
+
     public String getCurp() {
         return this.curp.getCurp();
     }

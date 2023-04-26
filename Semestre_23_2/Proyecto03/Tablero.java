@@ -38,8 +38,8 @@ public class Tablero {
 
     private static void imprimir(Hashtable<String, Integer> hashtable) {
 
-        System.out.println("          0    50   100  150  200");
-        System.out.println("          |    |     |    |    | ");
+        System.out.println("          0    50   100  150  200  250  300  350  400       500");
+        System.out.println("          |    |     |    |    |    |    |    |    |         | ");
 
         Set<String> partidos = hashtable.keySet();
         for (String partido : partidos) {

@@ -9,6 +9,12 @@ public class Productor {
     private static int numCurpsGeneradas = 5;
 
     public static void main(String[] args) {
+        try {
+            numCurpsGeneradas = Integer.parseInt(args[0]);
+        } catch (Exception e) {
+            System.out.println("No se ingresó un valor válido, se asigna " + numCurpsGeneradas + " como valor predefinido");
+        }
+
         File fichero = new File("Curp.txt");
         try {
             if (fichero.createNewFile()) {

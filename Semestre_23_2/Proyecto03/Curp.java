@@ -7,12 +7,34 @@ public class Curp {
         this.curp = createCURP();
     }
 
+
     public Curp(String curp) {
         this.curp = curp;
     }
 
     public String getCurp() {
         return this.curp;
+    }
+
+    public int getAnio() {
+        String anioString = this.curp.substring(4, 6);
+        int anio = 0;
+        try {
+            anio = Integer.parseInt(anioString);
+            
+        } catch (Exception e) {
+            System.out.println("Error al parsear el año de Nacimiento");
+        }
+
+        return anio;
+    }
+
+    public String getEstado() {
+        return this.curp.substring(11, 13);        
+    }
+
+    public String getSexo() {
+        return this.curp.substring(10, 11); 
     }
 
     private String createCURP() {
